@@ -98,7 +98,8 @@ class PSWebsocketClient:
             logger.debug("Successfully logged in")
             await self.send_message('', message)
         else:
-            logger.error("Could not log-in\nDetails:\n{}".format(response.content))
+            logger.error(
+                "Could not log-in\nDetails:\n{}".format(response.content))
             raise LoginError("Could not log-in")
 
     async def update_team(self, team):
@@ -108,7 +109,8 @@ class PSWebsocketClient:
     async def challenge_user(self, user_to_challenge, battle_format, team):
         logger.debug("Challenging {}...".format(user_to_challenge))
         if time.time() - self.last_challenge_time < 10:
-            logger.info("Sleeping for 10 seconds because last challenge was less than 10 seconds ago")
+            logger.info(
+                "Sleeping for 10 seconds because last challenge was less than 10 seconds ago")
             await asyncio.sleep(10)
         await self.update_team(team)
         message = ["/challenge {},{}".format(user_to_challenge, battle_format)]
@@ -125,17 +127,24 @@ class PSWebsocketClient:
         while username is None:
             msg = await self.receive_message()
             split_msg = msg.split('|')
-            if split_msg[1] == 'updatechallenges':
-                try:
-                    challenges = json.loads(split_msg[2])
-                    if challenges['challengesFrom'] is not None:
-                        username, challenge_format = next(iter(challenges['challengesFrom'].items()))
-                        if challenge_format != battle_format:
-                            username = None
-                except ValueError:
+            if len(split_msg) > 5 and split_msg[4].startswith('/challenge'):
+                # try:
+                #     challenges = json.loads(split_msg[2])
+                #     if challenges['challengesFrom'] is not None:
+                #         username, challenge_format = next(
+                #             iter(challenges['challengesFrom'].items()))
+                #         if challenge_format != battle_format:
+                #             username = None
+                # except ValueError:
+                #     username = None
+                # except StopIteration:
+                #     username = None
+                username = split_msg[2].strip()
+                challenge_format = split_msg[5]
+                if challenge_format != battle_format:
                     username = None
-                except StopIteration:
-                    username = None
+                else:
+                    logger.debug("Get a {} challenge from {}".format(challenge_format, username))
 
         message = ["/accept " + username]
         await self.send_message('', message)
@@ -176,5 +185,6 @@ class PSWebsocketClient:
                     }
                 )
                 if post_response.status_code != 200:
-                    raise SaveReplayError("POST to save replay did not return a 200: {}".format(post_response.content))
+                    raise SaveReplayError(
+                        "POST to save replay did not return a 200: {}".format(post_response.content))
                 break

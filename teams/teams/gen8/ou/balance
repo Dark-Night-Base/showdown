@@ -1,6 +1,6 @@
 Rotom-Heat @ Heavy-Duty Boots
 Ability: Levitate
-EVs: 252 SpA / 4 SpD / 252 Spe
+EVs: 1 Atk / 252 SpA / 4 SpD / 252 Spe
 Timid Nature
 IVs: 0 Atk
 - Volt Switch
@@ -10,7 +10,7 @@ IVs: 0 Atk
 
 Corviknight @ Leftovers
 Ability: Pressure
-EVs: 252 HP / 76 Def / 180 SpD
+EVs: 252 HP / 76 Def / 1 SpA / 180 SpD
 Impish Nature
 - Roost
 - U-turn
@@ -19,7 +19,7 @@ Impish Nature
 
 Clefable @ Leftovers
 Ability: Magic Guard
-EVs: 252 HP / 160 Def / 96 SpD
+EVs: 252 HP / 1 Atk / 160 Def / 96 SpD
 Calm Nature
 - Thunder Wave
 - Moonblast
@@ -28,7 +28,7 @@ Calm Nature
 
 Seismitoad @ Leftovers
 Ability: Water Absorb
-EVs: 252 HP / 4 Atk / 252 Def
+EVs: 252 HP / 4 Atk / 252 Def / 1 Spe
 Relaxed Nature
 - Earthquake
 - Stealth Rock
@@ -37,7 +37,7 @@ Relaxed Nature
 
 Hydreigon @ Choice Scarf
 Ability: Levitate
-EVs: 252 SpA / 4 SpD / 252 Spe
+EVs: 1 Atk / 252 SpA / 4 SpD / 252 Spe
 Timid Nature
 - Draco Meteor
 - Dark Pulse
@@ -46,7 +46,7 @@ Timid Nature
 
 Gyarados @ Leftovers
 Ability: Moxie
-EVs: 252 Atk / 4 SpD / 252 Spe
+EVs: 252 Atk / 1 SpA / 4 SpD / 252 Spe
 Adamant Nature
 - Dragon Dance
 - Earthquake
